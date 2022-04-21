@@ -1,0 +1,436 @@
+.audioPlayer {
+  --primary: #f40082;
+  --secondary: #ffd200;
+  --roundedCorner: 10px;
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  width: 100%;
+  /* height: 100vh; */
+  color: #ffedd4;
+}
+
+.imgContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.coverImg {
+  border-radius: 50%;
+  border: 2px solid black;
+  object-fit: cover;
+  height: 230px;
+  width: 230px;
+  margin-bottom: 10px;
+}
+
+.songInfo {
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.songArtist {
+  color: white;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.songTitle {
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+
+.progressBarContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.speaker {
+  margin-left: 10px;
+}
+
+.controls {
+  display: flex;
+  margin: 30px auto 0 auto;
+}
+
+.timeControls {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+.heart {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+.heart:hover {
+  color: red;
+}
+
+.timeControls:hover {
+  color: blue;
+}
+
+.playPause {
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  font-size: 32px;
+  color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.play {
+  position: relative;
+  left: 3px;
+}
+
+.currentTime,
+.duration {
+  /* font-family: monospace; */
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+/* .currentTime {
+  font-size: 20px;
+}
+
+.duration {
+  font-size: 20px;
+  margin-left: 3px;
+} */
+
+/* .currentTime {
+  margin-left: 25px;
+} */
+
+.progressBarWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progressBar {
+  --bar-bg: #ffedd4;
+  --seek-before-width: 0;
+  /* --seek-before-color: #ffc2a1; */
+  --seek-before-color: #f40082;
+  --knobby: #3452a5;
+  --selectedKnobby: #26c9c3;
+
+  appearance: none;
+  background: var(--bar-bg);
+  border-radius: 10px;
+  position: relative;
+  width: 500px;
+  /* height: 11px; */
+  outline: none;
+  cursor: pointer;
+  margin: 0 12px;
+}
+
+/* proggress bar --safari  => Good */
+
+.progressBar::-webkit-slider-runnable-track {
+  background: var(--bar-bg);
+  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 11px;
+  outline: none;
+}
+
+/* progress bar --firefox => Good */
+
+.progressBar::-moz-range-track {
+  background: var(--bar-bg);
+  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 11px;
+  outline: none;
+}
+
+.progressBar::-moz-focus-outer {
+  border: 0;
+}
+
+/* progress bar -chrome and safari => Good */
+
+.progressBar::before {
+  content: "";
+  height: 11px;
+  width: var(--seek-before-width);
+  background-color: var(--seek-before-color);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* progress bar -firefox => Good */
+
+.progressBar::-moz-range-progress {
+  background-color: var(--seek-before-color);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 11px;
+}
+
+/* knobby chrome and safari => Mistake Check */
+
+.progressBar::-webkit-slider-thumb {
+  /* --webkit-appearance: none; => Mistake */
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--knobby);
+  cursor: pointer;
+  position: relative;
+  margin: -2px 0 0 0;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+/* Knobby while drogging - chrome and safari */
+
+.progressBar:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+  background: var(--selectedKnobby);
+}
+
+/* knobby - firefox */
+
+.progressBar::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: transparent;
+  background-color: var(--knobby);
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+/*  Knobby while drogging - firefox */
+.progressBar:active::-moz-range-thumb {
+  transform: scale(1.2);
+  background: var(--selectedKnobby);
+}
+
+/* Chapter Video 2 */
+
+.progressBarWrapper {
+  position: relative;
+}
+
+.chapter {
+  display: block;
+  height: 11px;
+  background-color: var(--primary);
+  position: absolute;
+  top: 7px;
+  left: var(--left);
+  width: var(--width);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.chapter.start {
+  border-top-left-radius: var(--roundedCorner);
+  border-bottom-left-radius: var(--roundedCorner);
+}
+
+.chapter.end {
+  border-top-right-radius: var(--roundedCorner);
+  border-bottom-right-radius: var(--roundedCorner);
+}
+
+@media screen and (max-width: 768px) {
+  .progressBar {
+    width: 400px;
+  }
+
+  .coverImg {
+    height: 200px;
+    width: 200px;
+  }
+
+  .songArtist {
+    font-size: 1.5rem;
+  }
+
+  .songTitle {
+    font-size: 1rem;
+  }
+
+  .currentTime,
+  .duration {
+    font-size: 0.9rem;
+  }
+
+  .timeControls {
+    font-size: 28px;
+  }
+
+  .heart {
+    font-size: 28px;
+  }
+
+  .playPause {
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .progressBar {
+    width: 250px;
+  }
+
+  .coverImg {
+    height: 170px;
+    width: 170px;
+  }
+
+  .songArtist {
+    font-size: 1.2rem;
+  }
+
+  .songTitle {
+    font-size: 0.9rem;
+  }
+
+  .currentTime,
+  .duration {
+    font-size: 0.8rem;
+  }
+
+  .timeControls {
+    font-size: 26px;
+  }
+
+  .heart {
+    font-size: 26px;
+  }
+
+  .playPause {
+    width: 65px;
+    height: 65px;
+    font-size: 28px;
+  }
+}
+
+/* xs */
+
+@media screen and (max-width: 400px) {
+  .progressBar {
+    width: 200px;
+  }
+
+  .coverImg {
+    height: 150px;
+    width: 150px;
+  }
+
+  .songArtist {
+    font-size: 1rem;
+  }
+
+  .songTitle {
+    font-size: 0.8rem;
+  }
+
+  .currentTime,
+  .duration {
+    font-size: 0.7rem;
+  }
+
+  .timeControls {
+    font-size: 24px;
+  }
+
+  .heart {
+    font-size: 24px;
+  }
+
+  .playPause {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+  }
+}
+
+/* Galaxy fold === 280px width */
+
+@media screen and (max-width: 280px) {
+  .progressBar {
+    width: 150px;
+  }
+
+  .coverImg {
+    height: 120px;
+    width: 120px;
+  }
+
+  .songArtist {
+    font-size: 0.9rem;
+  }
+
+  .songTitle {
+    font-size: 0.7rem;
+  }
+
+  .currentTime,
+  .duration {
+    font-size: 0.6rem;
+  }
+
+  .timeControls {
+    font-size: 22px;
+  }
+
+  .heart {
+    font-size: 22px;
+  }
+
+  .playPause {
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+  }
+}

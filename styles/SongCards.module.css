@@ -1,0 +1,142 @@
+/* Song Cards */
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 60px auto;
+  max-width: 1200px;
+  padding: 0;
+}
+
+.card {
+  height: 180px;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  /* justify-content: space-between; */
+  cursor: pointer;
+  /* background-color: #0a3d62; */
+  background-image: radial-gradient(
+    circle 602px at 2.1% 5.1%,
+    rgba(233, 0, 120, 1) 0%,
+    rgba(0, 0, 0, 1) 90.1%
+  );
+  margin: 16px 0;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card img {
+  height: 130px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4);
+}
+
+.SongInfoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #ffffff;
+}
+
+.SongTitle {
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.SongArtist {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* .controlls {
+  margin: 10px 0;
+}
+
+.controlls a {
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.controlls .fa {
+  color: #ffffff;
+  height: 60px;
+} */
+
+@media screen and (max-width: 768px) {
+  .card {
+    height: 150px;
+  }
+
+  .card img {
+    height: 100px;
+  }
+
+  .SongInfoContainer {
+    font-size: 14px;
+  }
+
+  .SongTitle {
+    font-size: 15px;
+  }
+
+  .SongArtist {
+    font-size: 12px;
+  }
+}
+
+/* xs */
+
+@media screen and (max-width: 576px) {
+  .card {
+    height: 120px;
+  }
+
+  .card img {
+    height: 80px;
+  }
+
+  .SongInfoContainer {
+    font-size: 12px;
+  }
+
+  .SongTitle {
+    font-size: 13px;
+  }
+
+  .SongArtist {
+    font-size: 10px;
+  }
+}
+
+/* Galaxy fold === 280px width */
+
+@media screen and (max-width: 280px) {
+  .card {
+    height: 100px;
+  }
+
+  .card img {
+    height: 60px;
+  }
+
+  .SongInfoContainer {
+    font-size: 10px;
+  }
+
+  .SongTitle {
+    font-size: 11px;
+  }
+
+  .SongArtist {
+    font-size: 8px;
+  }
+}
