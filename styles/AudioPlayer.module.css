@@ -310,12 +310,15 @@
   .playPause {
     width: 70px;
     height: 70px;
-    /* font-size: 30px; */
+    font-size: 30px;
   }
 
-  .play {
-    position: relative;
-    left: 3px;
+  /* Make the play button bigger in safari */
+
+  .playPause::-webkit-slider-thumb {
+    height: 70px;
+    width: 70px;
+    font-size: 30px;
   }
 }
 
@@ -353,12 +356,15 @@
   .playPause {
     width: 65px;
     height: 65px;
-    /* font-size: 28px; */
+    font-size: 28px;
   }
 
-  .play {
-    position: relative;
-    left: 3px;
+  /* Make the play button bigger in safari */
+
+  .playPause::-webkit-slider-thumb {
+    height: 65px;
+    width: 65px;
+    font-size: 28px;
   }
 }
 
@@ -399,12 +405,15 @@
   .playPause {
     width: 60px;
     height: 60px;
-    /* font-size: 26px; */
+    font-size: 26px;
   }
 
-  .play {
-    position: relative;
-    left: 3px;
+  /* Make the play button bigger in safari */
+
+  .playPause::-webkit-slider-thumb {
+    height: 60px;
+    width: 60px;
+    font-size: 26px;
   }
 }
 
@@ -447,8 +456,11 @@
     font-size: 24px;
   }
 
-  .play {
-    position: relative;
-    left: 3px;
+  /* Make the play button bigger in safari */
+
+  .playPause::-webkit-slider-thumb {
+    height: 55px;
+    width: 55px;
+    font-size: 24px;
   }
 }
