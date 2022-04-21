@@ -381,11 +381,12 @@
   }
 
   .controls {
-    max-width: 200px;
+    width: 200px;
   }
 
   .timeControls {
     font-size: 24px;
+    margin: 0;
   }
 
   .heart {
