@@ -300,7 +300,6 @@
 
   .timeControls {
     font-size: 28px;
-    width: 35px;
   }
 
   .heart {
@@ -318,7 +317,7 @@
   .playPause::-webkit-slider-thumb {
     height: 70px;
     width: 70px;
-    font-size: 30px;
+    font-size: 70px;
   }
 }
 
@@ -349,6 +348,10 @@
     font-size: 26px;
   }
 
+  .controls {
+    max-width: 250px;
+  }
+
   .heart {
     font-size: 26px;
   }
@@ -364,7 +367,7 @@
   .playPause::-webkit-slider-thumb {
     height: 65px;
     width: 65px;
-    font-size: 28px;
+    font-size: 65px;
   }
 }
 
@@ -391,6 +394,10 @@
   .currentTime,
   .duration {
     font-size: 0.7rem;
+  }
+
+  .controls {
+    max-width: 205px;
   }
 
   .timeControls {
