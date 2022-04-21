@@ -300,6 +300,7 @@
 
   .timeControls {
     font-size: 28px;
+    width: 35px;
   }
 
   .heart {
@@ -309,7 +310,12 @@
   .playPause {
     width: 70px;
     height: 70px;
-    font-size: 30px;
+    /* font-size: 30px; */
+  }
+
+  .play {
+    position: relative;
+    left: 3px;
   }
 }
 
@@ -336,10 +342,6 @@
     font-size: 0.8rem;
   }
 
-  .controls {
-    max-width: 250px;
-  }
-
   .timeControls {
     font-size: 26px;
   }
@@ -351,7 +353,12 @@
   .playPause {
     width: 65px;
     height: 65px;
-    font-size: 28px;
+    /* font-size: 28px; */
+  }
+
+  .play {
+    position: relative;
+    left: 3px;
   }
 }
 
@@ -380,10 +387,6 @@
     font-size: 0.7rem;
   }
 
-  .controls {
-    width: 200px;
-  }
-
   .timeControls {
     font-size: 24px;
     margin: 0;
@@ -396,7 +399,12 @@
   .playPause {
     width: 60px;
     height: 60px;
-    font-size: 26px;
+    /* font-size: 26px; */
+  }
+
+  .play {
+    position: relative;
+    left: 3px;
   }
 }
 
@@ -437,5 +445,10 @@
     width: 55px;
     height: 55px;
     font-size: 24px;
+  }
+
+  .play {
+    position: relative;
+    left: 3px;
   }
 }
