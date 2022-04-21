@@ -59,15 +59,14 @@
 
 .controls {
   display: flex;
-  margin: 30px auto 0 auto;
+  margin: 30px 2px 0 2px;
+  align-items: center;
+  justify-content: center;
 }
 
 .timeControls {
   background: none;
   border: none;
-  display: flex;
-  align-items: center;
-  font-family: monospace;
   font-size: 30px;
   cursor: pointer;
   color: white;
@@ -76,9 +75,6 @@
 .heart {
   background: none;
   border: none;
-  display: flex;
-  align-items: center;
-  font-family: monospace;
   font-size: 30px;
   cursor: pointer;
   color: white;
