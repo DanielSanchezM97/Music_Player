@@ -336,6 +336,10 @@
     font-size: 0.8rem;
   }
 
+  .controls {
+    max-width: 250px;
+  }
+
   .timeControls {
     font-size: 26px;
   }
@@ -374,6 +378,10 @@
   .currentTime,
   .duration {
     font-size: 0.7rem;
+  }
+
+  .controls {
+    max-width: 200px;
   }
 
   .timeControls {
