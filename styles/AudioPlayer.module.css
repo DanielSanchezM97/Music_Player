@@ -346,6 +346,7 @@
   .timeControls {
     font-size: 26px;
     margin: 0;
+    padding: 3px;
   }
 
   .controls {
@@ -359,13 +360,14 @@
   .playPause {
     width: 65px;
     height: 65px;
+    font-size: 40px;
   }
 
   .play {
     height: 28px;
     width: 28px;
     min-height: 28px;
-    z-index: 3;
+    z-index: 10;
   }
 }
 
@@ -417,7 +419,7 @@
     height: 26px;
     width: 26px;
     min-height: 26px;
-    z-index: 3;
+    z-index: 10;
   }
 }
 
@@ -464,6 +466,6 @@
     height: 24px;
     width: 24px;
     min-height: 24px;
-    z-index: 3;
+    z-index: 10;
   }
 }
