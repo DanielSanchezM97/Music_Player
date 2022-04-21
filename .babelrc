@@ -1,4 +1,14 @@
+// {
+//   "presets": ["next/babel"],
+//   "plugins": []
+// }
 {
-  "presets": ["next/babel"],
-  "plugins": []
+  "presets": [["@babel/preset-env"]],
+  "plugins": [["@babel/transform-runtime"]],
+  "env": {
+    "development": {
+      "sourceMaps": true,
+      "retainLines": true
+    }
+  }
 }
