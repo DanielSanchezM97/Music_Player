@@ -90,6 +90,7 @@ const AudioPlayer = (props) => {
     if (currentTime == duration && isPlaying && !repeatSong) {
       togglePlayPause();
       timeTravel(0);
+      setIsActive(false);
     } else if (currentTime == duration && repeatSong) {
       timeTravel(0);
       audioPlayer.current.play();
