@@ -86,9 +86,12 @@
   background: white;
   border: none;
   border-radius: 50%;
-  width: 75px;
+  width: 95px;
+  height: 95px;
+  font-size: 42px;
+  /* width: 75px;
   height: 75px;
-  font-size: 32px;
+  font-size: 32px; */
   color: blue;
   display: flex;
   justify-content: center;
@@ -344,9 +347,9 @@
     padding: 0.3rem;
   }
 
-  .controls {
+  /* .controls {
     max-width: 250px;
-  }
+  } */
 
   .heart {
     font-size: 26px;
@@ -392,9 +395,9 @@
     font-size: 0.7rem;
   }
 
-  .controls {
-    max-width: 205px;
-  }
+  /* .controls {
+    max-width: 220px;
+  } */
 
   .timeControls {
     font-size: 24px;
