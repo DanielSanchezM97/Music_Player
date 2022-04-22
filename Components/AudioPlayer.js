@@ -359,7 +359,7 @@ const AudioPlayer = (props) => {
       {/* Additionnal Controls */}
 
       <div className={styles.controls}>
-        <button className={styles.timeControls}>
+        <button className={styles.AdditionalControls}>
           <TiArrowShuffle />
         </button>
         <button
@@ -373,14 +373,14 @@ const AudioPlayer = (props) => {
           )}
         </button>
         <button
-          className={styles.timeControls}
+          className={styles.AdditionalControls}
           onClick={() => {
             setRepeatSong(!repeatSong);
           }}
         >
           {repeatSong ? <MdRepeatOne /> : <MdOutlineRepeat />}
         </button>
-        <button className={styles.timeControls} onClick={toggleMute}>
+        <button className={styles.AdditionalControls} onClick={toggleMute}>
           {muted ? <GiSpeakerOff /> : <GiSpeaker />}
         </button>
       </div>
