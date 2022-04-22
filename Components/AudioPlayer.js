@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "../styles/AudioPlayer.module.css";
 import { AiFillBackward } from "react-icons/ai";
 import { AiFillForward } from "react-icons/ai";
-import { FaPlay } from "react-icons/fa";
-import { FaPause } from "react-icons/fa";
 import { CgPlayTrackPrev } from "react-icons/cg";
 import { CgPlayTrackNext } from "react-icons/cg";
 import { GiSpeaker } from "react-icons/gi";
@@ -55,6 +53,63 @@ const AudioPlayer = (props) => {
       end: 140,
       // start: 100,
       // end: 140,
+    },
+  ];
+
+  const Songs = [
+    {
+      title: "(You're The) Devil in Disguise",
+      artist: "Elvis Presley",
+      like: false,
+      image:
+        "https://www.nacionrex.com/__export/1515365585499/sites/debate/img/2018/01/07/foto_de_portada_elvis.jpg_423682103.jpg",
+      audio: "../audios/AudioElvis.mp3",
+    },
+    {
+      title: "Get Lucky feat. Pharrell Williams and Nile Rodgers",
+      artist: "Daft Punk",
+      like: false,
+      image: "https://img.youtube.com/vi/h5EofwRzit0/hqdefault.jpg?rev=2.8.6.2",
+      audio: "../audios/GetLucky.mp3",
+    },
+    {
+      title: "Save Me",
+      artist: "Bruno Martini",
+      like: false,
+      image:
+        "https://i1.sndcdn.com/artworks-fDl6pv6QSY5GATMI-NOVBYQ-t500x500.jpg",
+      audio: "../audios/SaveMe.mp3",
+    },
+    {
+      title: "Accidentally in Love",
+      artist: "Counting Crows",
+      like: false,
+      image:
+        "https://www.gannett-cdn.com/-mm-/6adc9704e2926e2fdd103128da3a87abf86aee99/c=0-77-1742-2400/local/-/media/2016/09/07/Phoenix/Phoenix/636088629485674132-counting-crows-2.jpg",
+      audio: "../audios/AccidentallyInLove.mp3",
+    },
+    {
+      title: "You Get What You Give",
+      artist: "New Radicals",
+      like: false,
+      image:
+        "https://i0.wp.com/www.alexurbanpop.com/wp-content/uploads/2019/08/New-Radicals-You-Get-What-You-Give.jpg?fit=1000%2C1000&ssl=1",
+      audio: "../audios/YouGetWhatYouGive.mp3",
+    },
+    {
+      title: "Moves Like Jagger",
+      artist: "Maroon 5",
+      like: false,
+      image:
+        "https://p4.wallpaperbetter.com/wallpaper/819/67/757/maroon-5-band-members-look-wallpaper-preview.jpg",
+      audio: "../audios/MovesLikeJagger.mp3",
+    },
+    {
+      title: "Am I Wrong",
+      artist: "Nico & Vinz",
+      like: false,
+      image: "https://m.media-amazon.com/images/I/417OWNKAvZL.jpg",
+      audio: "../audios/AmIWrong.mp3",
     },
   ];
 
@@ -238,6 +293,46 @@ const AudioPlayer = (props) => {
     changeRange();
   };
 
+  const handlePrev = () => {
+    Songs.map((song, index) => {
+      if (song.title === songTitle) {
+        if (index === 0) {
+          setAudio(Songs[Songs.length - 1].audio);
+          setSongTitle(Songs[Songs.length - 1].title);
+          setImage(Songs[Songs.length - 1].image);
+          setSongArtist(Songs[Songs.length - 1].artist);
+          setIsActive(true);
+        } else {
+          setAudio(Songs[index - 1].audio);
+          setSongTitle(Songs[index - 1].title);
+          setImage(Songs[index - 1].image);
+          setSongArtist(Songs[index - 1].artist);
+          setIsActive(true);
+        }
+      }
+    });
+  };
+
+  const handleNext = () => {
+    Songs.map((song, index) => {
+      if (song.title === songTitle) {
+        if (index === Songs.length - 1) {
+          setAudio(Songs[0].audio);
+          setSongTitle(Songs[0].title);
+          setImage(Songs[0].image);
+          setSongArtist(Songs[0].artist);
+          setIsActive(true);
+        } else {
+          setAudio(Songs[index + 1].audio);
+          setSongTitle(Songs[index + 1].title);
+          setImage(Songs[index + 1].image);
+          setSongArtist(Songs[index + 1].artist);
+          setIsActive(true);
+        }
+      }
+    });
+  };
+
   // ! muted and unmuted
 
   const toggleMute = () => {
@@ -260,12 +355,8 @@ const AudioPlayer = (props) => {
       {/* Song Info */}
 
       <div className={styles.songInfo}>
-        <p className={styles.songArtist}>
-          {songArtist ? songArtist : "Elvis Presley"}
-        </p>
-        <p className={styles.songTitle}>
-          {songTitle ? songTitle : "(You're The) Devil in Disguise"}
-        </p>
+        <p className={styles.songArtist}>{songArtist}</p>
+        <p className={styles.songTitle}>{songTitle}</p>
       </div>
 
       {/* Audio Player Reference */}
@@ -329,10 +420,7 @@ const AudioPlayer = (props) => {
       <div className={styles.controls}>
         <button
           onClick={() => {
-            setAudio(Elvis);
-            setImage(elvisImage);
-            setSongTitle("(You're The) Devil in Disguise");
-            setSongArtist("Elvis Presley");
+            handlePrev();
           }}
           className={styles.timeControls}
         >
@@ -389,10 +477,7 @@ const AudioPlayer = (props) => {
         </button>
         <button
           onClick={() => {
-            setAudio(GetLucky);
-            setImage(getLuckyImage);
-            setSongTitle("Get Lucky feat. Pharrell Williams and Nile Rodgers");
-            setSongArtist("Daft Punk");
+            handleNext();
           }}
           className={styles.timeControls}
         >

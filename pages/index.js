@@ -14,8 +14,8 @@ export default function Home() {
   const [audio, setAudio] = useState(null);
   const [image, setImage] = useState(null);
   const [muted, setMuted] = useState(false);
-  const [songTitle, setSongTitle] = useState("");
-  const [songArtist, setSongArtist] = useState("");
+  const [songTitle, setSongTitle] = useState("(You're The) Devil in Disguise");
+  const [songArtist, setSongArtist] = useState("Elvis Presley");
   const [heartFill, setHeartFill] = useState(false);
   const [repeatSong, setRepeatSong] = useState(false);
   const [isActive, setIsActive] = useState(false);
