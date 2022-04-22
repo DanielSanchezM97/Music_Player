@@ -352,10 +352,12 @@
     font-size: 26px;
   }
 
-  .playPause {
+  /* .playPause {
     width: 65px;
     height: 65px;
-  }
+    font-size: 200px;
+    font-size: 1.9rem;
+  } */
 
   /* .play {
     height: 28px;
