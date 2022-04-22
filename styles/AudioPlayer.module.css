@@ -130,7 +130,8 @@
 }
 
 .progressBar {
-  --bar-bg: #ffedd4;
+  --bar-bg: white;
+  /* --bar-bg: #ffedd4; */
   --seek-before-width: 0;
   /* --seek-before-color: #ffc2a1; */
   --seek-before-color: #f40082;
