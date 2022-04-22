@@ -303,7 +303,8 @@
   .playPause {
     width: 70px;
     height: 70px;
-    font-size: 2.1rem;
+    font-size: 200px;
+    /* font-size: 2.1rem; */
   }
 
   /* .play {
@@ -354,7 +355,8 @@
   .playPause {
     width: 65px;
     height: 65px;
-    font-size: 1.9rem;
+    font-size: 200px;
+    /* font-size: 1.9rem; */
   }
 
   /* .play {
@@ -406,7 +408,8 @@
   .playPause {
     width: 60px;
     height: 60px;
-    font-size: 1.8rem;
+    font-size: 200px;
+    /* font-size: 1.8rem; */
   }
 
   /* .play {
@@ -453,7 +456,8 @@
   .playPause {
     width: 55px;
     height: 55px;
-    font-size: 24px;
+    font-size: 200px;
+    /* font-size: 24px; */
   }
 
   /* .play {
