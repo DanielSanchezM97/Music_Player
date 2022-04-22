@@ -18,6 +18,7 @@ export default function Home() {
   const [songArtist, setSongArtist] = useState("");
   const [heartFill, setHeartFill] = useState(false);
   const [repeatSong, setRepeatSong] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -39,6 +40,7 @@ export default function Home() {
           repeatSong={repeatSong}
           songTitle={songTitle}
           songArtist={songArtist}
+          isActive={isActive}
           setIsPlaying={setIsPlaying}
           setDuration={setDuration}
           setCurrentTime={setCurrentTime}
@@ -49,6 +51,7 @@ export default function Home() {
           setMuted={setMuted}
           setSongTitle={setSongTitle}
           setSongArtist={setSongArtist}
+          setIsActive={setIsActive}
         />
         <SongCards
           audio={audio}

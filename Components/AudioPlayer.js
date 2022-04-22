@@ -26,6 +26,7 @@ const AudioPlayer = (props) => {
     muted,
     songTitle,
     songArtist,
+    isActive,
   } = props;
 
   const {
@@ -39,6 +40,7 @@ const AudioPlayer = (props) => {
     setMuted,
     setSongTitle,
     setSongArtist,
+    setIsActive,
   } = props;
 
   const chapters = [
@@ -241,6 +243,12 @@ const AudioPlayer = (props) => {
     setMuted(!muted);
   };
 
+  // ! Change between classes play and pause
+
+  const toggleClass = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <div className={styles.audioPlayer}>
       {/* Song Cover */}
@@ -337,9 +345,49 @@ const AudioPlayer = (props) => {
         <button className={styles.timeControls} onClick={backThirty}>
           <AiFillBackward />
         </button>
-        <button onClick={togglePlayPause} className={styles.playPause}>
+
+        {/* Play and Pause Button */}
+
+        {/* <button onClick={togglePlayPause} className={styles.playPause}>
           {isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
-        </button>
+        </button> */}
+
+        <div
+          className={styles.newButton}
+          // onclick="this.classList.toggle('active')"
+        >
+          <div className={styles.background}></div>
+          <div
+            className={isActive ? styles.activeIcon : styles.icon}
+            width="200"
+            height="200"
+          >
+            <div
+              className={`${styles.parte} ${
+                isActive ? styles.activeLeft : styles.left
+              }`}
+              x="0"
+              y="0"
+            ></div>
+            <div
+              className={`${styles.parte} ${
+                isActive ? styles.activeRight : styles.right
+              }`}
+              x="0"
+              y="0"
+            ></div>
+          </div>
+          <div
+            className={styles.puntero}
+            onClick={() => {
+              togglePlayPause();
+              toggleClass();
+            }}
+          ></div>
+        </div>
+
+        {/* End of Play and Pause Button */}
+
         <button className={styles.timeControls} onClick={forwardThirty}>
           <AiFillForward />
         </button>
