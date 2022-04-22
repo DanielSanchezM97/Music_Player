@@ -145,6 +145,7 @@ const AudioPlayer = (props) => {
     if (e.keyCode === 32) {
       e.preventDefault();
       togglePlayPause();
+      setIsActive(!isActive);
     } else if (e.keyCode === 39) {
       forwardThirty();
     } else if (e.keyCode === 37) {
@@ -241,12 +242,6 @@ const AudioPlayer = (props) => {
   const toggleMute = () => {
     audioPlayer.current.muted = !audioPlayer.current.muted;
     setMuted(!muted);
-  };
-
-  // ! Change between classes play and pause
-
-  const toggleClass = () => {
-    setIsActive(!isActive);
   };
 
   return (
@@ -381,7 +376,7 @@ const AudioPlayer = (props) => {
             className={styles.puntero}
             onClick={() => {
               togglePlayPause();
-              toggleClass();
+              setIsActive(!isActive);
             }}
           ></div>
         </div>

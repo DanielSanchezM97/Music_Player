@@ -59,7 +59,8 @@
 
 .controls {
   display: flex;
-  margin: 30px 2px 0 2px;
+  /* margin: 30px 2px 0 2px; */
+  margin: 0;
   align-items: center;
   justify-content: center;
 }
@@ -281,7 +282,7 @@
 }
 
 .background {
-  background: #f4471f;
+  background: white;
   border-radius: 50%;
   box-shadow: 0 1px 2.2px rgba(0, 0, 0, 0.051),
     0 2.3px 5.3px rgba(0, 0, 0, 0.059), 0 4.4px 10px rgba(0, 0, 0, 0.06),
@@ -306,7 +307,7 @@
   width: 200px;
 }
 .parte {
-  background: white;
+  background: blue;
   height: 200px;
   position: absolute;
   width: 200px;
@@ -638,6 +639,16 @@
 
   .heart {
     font-size: 28px;
+  }
+
+  .newButton {
+    height: 150px;
+    width: 100px;
+  }
+
+  .background {
+    height: 90px;
+    width: 90px;
   }
 
   /* .playPause {

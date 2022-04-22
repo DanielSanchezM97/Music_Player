@@ -2,8 +2,9 @@ import React from "react";
 import styles from "../styles/SongCards.module.css";
 
 function SongCards(props) {
-  const { audio, image, songTitle, songArtist } = props;
-  const { setAudio, setImage, setSongTitle, setSongArtist } = props;
+  const { audio, image, songTitle, songArtist, isActive } = props;
+  const { setAudio, setImage, setSongTitle, setSongArtist, setIsActive } =
+    props;
 
   const Elvis = "../audios/AudioElvis.mp3";
   const GetLucky = "../audios/GetLucky.mp3";
@@ -23,6 +24,7 @@ function SongCards(props) {
           setImage(elvisImage);
           setSongArtist("Elvis Presley");
           setSongTitle("(You're The) Devil in Disguise");
+          setIsActive(true);
         }}
       >
         <div className={styles.imageContainer}>
@@ -41,6 +43,7 @@ function SongCards(props) {
           setImage(getLuckyImage);
           setSongArtist("Daft Punk");
           setSongTitle("Get Lucky feat. Pharrell Williams and Nile Rodgers");
+          setIsActive(true);
         }}
       >
         <div className={styles.imageContainer}>

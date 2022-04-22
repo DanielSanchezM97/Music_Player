@@ -58,10 +58,12 @@ export default function Home() {
           image={image}
           songTitle={songTitle}
           songArtist={songArtist}
+          isActive={isActive}
           setAudio={setAudio}
           setImage={setImage}
           setSongTitle={setSongTitle}
           setSongArtist={setSongArtist}
+          setIsActive={setIsActive}
         />
       </main>
     </div>
