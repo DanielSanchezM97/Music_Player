@@ -25,14 +25,19 @@ export default function Home() {
 
   const devilInDisguiseBg = `radial-gradient(
     circle 602px at 2.1% 5.1%,
-    rgb(206, 200, 203) 0%,
-    rgba(0, 0, 0, 1) 90.1%
+    rgba(65, 63, 77, 0.527) 0%,
+    rgb(0, 0, 0) 90.1%
   )`;
 
+  // const getLuckyBg = `radial-gradient(
+  //   circle 602px at 2.1% 5.1%,
+  //   rgba(10, 10, 10, 0.527) 50%,
+  //   rgba(0, 0, 0, 1) 90.1%
+  // )`;
   const getLuckyBg = `radial-gradient(
     circle 602px at 2.1% 5.1%,
-    rgba(10, 10, 10, 0.527) 0%,
-    rgba(0, 0, 0, 1) 90.1%
+    rgba(60, 51, 110, 0.527) 0%,
+    rgb(0, 0, 0) 90.1%
   )`;
 
   const saveMeBg = `radial-gradient(
