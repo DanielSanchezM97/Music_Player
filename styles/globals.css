@@ -10,9 +10,19 @@ body {
     rgba(29, 108, 124, 1) 0%,
     rgba(9, 9, 121, 1) 70%
   ); */
-  background-image: radial-gradient(
+
+  /* Background in Use */
+
+  /* background-image: radial-gradient(
     circle 602px at 2.1% 5.1%,
     rgba(233, 0, 120, 1) 0%,
+    rgba(0, 0, 0, 1) 90.1%
+  ); */
+
+  /* Test */
+  background-image: radial-gradient(
+    circle 602px at 2.1% 5.1%,
+    rgba(10, 10, 10, 0.527) 0%,
     rgba(0, 0, 0, 1) 90.1%
   );
 }

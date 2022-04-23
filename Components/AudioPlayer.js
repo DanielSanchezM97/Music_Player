@@ -64,6 +64,13 @@ const AudioPlayer = (props) => {
       image:
         "https://www.nacionrex.com/__export/1515365585499/sites/debate/img/2018/01/07/foto_de_portada_elvis.jpg_423682103.jpg",
       audio: "../audios/AudioElvis.mp3",
+      background: `style="
+      background-image: radial-gradient(
+        circle 602px at 2.1% 5.1%,
+        rgb(206, 200, 203) 0%,
+        rgba(0, 0, 0, 1) 90.1%
+      );
+      `,
     },
     {
       title: "Get Lucky feat. Pharrell Williams and Nile Rodgers",
@@ -112,14 +119,6 @@ const AudioPlayer = (props) => {
       audio: "../audios/AmIWrong.mp3",
     },
   ];
-
-  const Elvis = "../audios/AudioElvis.mp3";
-  const GetLucky = "../audios/GetLucky.mp3";
-
-  const elvisImage =
-    "https://www.nacionrex.com/__export/1515365585499/sites/debate/img/2018/01/07/foto_de_portada_elvis.jpg_423682103.jpg";
-  const getLuckyImage =
-    "https://img.youtube.com/vi/h5EofwRzit0/hqdefault.jpg?rev=2.8.6.2";
 
   // ! refs
 
@@ -347,7 +346,7 @@ const AudioPlayer = (props) => {
       <div className={styles.imgContainer}>
         <img
           className={styles.coverImg}
-          src={image ? image : elvisImage}
+          src={image ? image : Songs[0].image}
           alt="cover"
         />
       </div>
@@ -364,7 +363,7 @@ const AudioPlayer = (props) => {
       <audio
         ref={audioPlayer}
         // src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-        src={audio ? audio : Elvis}
+        src={audio ? audio : Songs[0].audio}
         preload="metadata"
       ></audio>
 
