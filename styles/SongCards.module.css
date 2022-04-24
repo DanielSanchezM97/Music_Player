@@ -44,7 +44,7 @@
   height: 150px;
   width: 150px;
   object-fit: cover;
-  margin: 10px 20px;
+  margin: 10px 20px 10px 0;
   box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4);
   -webkit-touch-callout: none;
   -moz-user-select: none;
