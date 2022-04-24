@@ -25,6 +25,7 @@ body {
     rgba(12, 3, 66, 0.521) 0%,
     rgb(0, 0, 0) 90.1%
   );
+  scroll-behavior: smooth;
 }
 
 a {

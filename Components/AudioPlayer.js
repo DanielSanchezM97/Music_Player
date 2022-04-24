@@ -14,6 +14,7 @@ import { TiArrowShuffle } from "react-icons/ti";
 
 const AudioPlayer = (props) => {
   const {
+    Songs,
     isPlaying,
     duration,
     currentTime,
@@ -25,6 +26,9 @@ const AudioPlayer = (props) => {
     songTitle,
     songArtist,
     isActive,
+    audioPlayer,
+    progressBar,
+    animationRef,
   } = props;
 
   const {
@@ -41,6 +45,8 @@ const AudioPlayer = (props) => {
     setIsActive,
   } = props;
 
+  const { togglePlayPause } = props;
+
   const chapters = [
     {
       // start: 0,
@@ -56,75 +62,75 @@ const AudioPlayer = (props) => {
     },
   ];
 
-  const Songs = [
-    {
-      title: "(You're The) Devil in Disguise",
-      artist: "Elvis Presley",
-      like: false,
-      image:
-        "https://www.nacionrex.com/__export/1515365585499/sites/debate/img/2018/01/07/foto_de_portada_elvis.jpg_423682103.jpg",
-      audio: "../audios/AudioElvis.mp3",
-      background: `style="
-      background-image: radial-gradient(
-        circle 602px at 2.1% 5.1%,
-        rgb(206, 200, 203) 0%,
-        rgba(0, 0, 0, 1) 90.1%
-      );
-      `,
-    },
-    {
-      title: "Get Lucky feat. Pharrell Williams and Nile Rodgers",
-      artist: "Daft Punk",
-      like: false,
-      image: "https://img.youtube.com/vi/h5EofwRzit0/hqdefault.jpg?rev=2.8.6.2",
-      audio: "../audios/GetLucky.mp3",
-    },
-    {
-      title: "Save Me",
-      artist: "Bruno Martini",
-      like: false,
-      image:
-        "https://i1.sndcdn.com/artworks-fDl6pv6QSY5GATMI-NOVBYQ-t500x500.jpg",
-      audio: "../audios/SaveMe.mp3",
-    },
-    {
-      title: "Accidentally in Love",
-      artist: "Counting Crows",
-      like: false,
-      image:
-        "https://www.gannett-cdn.com/-mm-/6adc9704e2926e2fdd103128da3a87abf86aee99/c=0-77-1742-2400/local/-/media/2016/09/07/Phoenix/Phoenix/636088629485674132-counting-crows-2.jpg",
-      audio: "../audios/AccidentallyInLove.mp3",
-    },
-    {
-      title: "You Get What You Give",
-      artist: "New Radicals",
-      like: false,
-      image:
-        "https://i0.wp.com/www.alexurbanpop.com/wp-content/uploads/2019/08/New-Radicals-You-Get-What-You-Give.jpg?fit=1000%2C1000&ssl=1",
-      audio: "../audios/YouGetWhatYouGive.mp3",
-    },
-    {
-      title: "Moves Like Jagger",
-      artist: "Maroon 5",
-      like: false,
-      image:
-        "https://p4.wallpaperbetter.com/wallpaper/819/67/757/maroon-5-band-members-look-wallpaper-preview.jpg",
-      audio: "../audios/MovesLikeJagger.mp3",
-    },
-    {
-      title: "Am I Wrong",
-      artist: "Nico & Vinz",
-      like: false,
-      image: "https://m.media-amazon.com/images/I/417OWNKAvZL.jpg",
-      audio: "../audios/AmIWrong.mp3",
-    },
-  ];
+  // const Songs = [
+  //   {
+  //     title: "(You're The) Devil in Disguise",
+  //     artist: "Elvis Presley",
+  //     like: false,
+  //     image:
+  //       "https://www.nacionrex.com/__export/1515365585499/sites/debate/img/2018/01/07/foto_de_portada_elvis.jpg_423682103.jpg",
+  //     audio: "../audios/AudioElvis.mp3",
+  //     background: `style="
+  //     background-image: radial-gradient(
+  //       circle 602px at 2.1% 5.1%,
+  //       rgb(206, 200, 203) 0%,
+  //       rgba(0, 0, 0, 1) 90.1%
+  //     );
+  //     `,
+  //   },
+  //   {
+  //     title: "Get Lucky feat. Pharrell Williams and Nile Rodgers",
+  //     artist: "Daft Punk",
+  //     like: false,
+  //     image: "https://img.youtube.com/vi/h5EofwRzit0/hqdefault.jpg?rev=2.8.6.2",
+  //     audio: "../audios/GetLucky.mp3",
+  //   },
+  //   {
+  //     title: "Save Me",
+  //     artist: "Bruno Martini",
+  //     like: false,
+  //     image:
+  //       "https://i1.sndcdn.com/artworks-fDl6pv6QSY5GATMI-NOVBYQ-t500x500.jpg",
+  //     audio: "../audios/SaveMe.mp3",
+  //   },
+  //   {
+  //     title: "Accidentally in Love",
+  //     artist: "Counting Crows",
+  //     like: false,
+  //     image:
+  //       "https://www.gannett-cdn.com/-mm-/6adc9704e2926e2fdd103128da3a87abf86aee99/c=0-77-1742-2400/local/-/media/2016/09/07/Phoenix/Phoenix/636088629485674132-counting-crows-2.jpg",
+  //     audio: "../audios/AccidentallyInLove.mp3",
+  //   },
+  //   {
+  //     title: "You Get What You Give",
+  //     artist: "New Radicals",
+  //     like: false,
+  //     image:
+  //       "https://i0.wp.com/www.alexurbanpop.com/wp-content/uploads/2019/08/New-Radicals-You-Get-What-You-Give.jpg?fit=1000%2C1000&ssl=1",
+  //     audio: "../audios/YouGetWhatYouGive.mp3",
+  //   },
+  //   {
+  //     title: "Moves Like Jagger",
+  //     artist: "Maroon 5",
+  //     like: false,
+  //     image:
+  //       "https://p4.wallpaperbetter.com/wallpaper/819/67/757/maroon-5-band-members-look-wallpaper-preview.jpg",
+  //     audio: "../audios/MovesLikeJagger.mp3",
+  //   },
+  //   {
+  //     title: "Am I Wrong",
+  //     artist: "Nico & Vinz",
+  //     like: false,
+  //     image: "https://m.media-amazon.com/images/I/417OWNKAvZL.jpg",
+  //     audio: "../audios/AmIWrong.mp3",
+  //   },
+  // ];
 
-  // ! refs
+  // // ! refs
 
-  const audioPlayer = useRef(); // ? reference to the audio component
-  const progressBar = useRef(); // ? reference to the progress bar
-  const animationRef = useRef(); // ? reference to the animation
+  // const audioPlayer = useRef(); // ? reference to the audio component
+  // const progressBar = useRef(); // ? reference to the progress bar
+  // const animationRef = useRef(); // ? reference to the animation
 
   // ! useEffect to handle the audio player
 
@@ -217,33 +223,36 @@ const AudioPlayer = (props) => {
     return `${returnedMinutes}:${returnedSeconds}`;
   };
 
-  const togglePlayPause = () => {
-    const prevValue = isPlaying;
-    setIsPlaying(!prevValue);
+  // const togglePlayPause = () => {
+  //   const prevValue = isPlaying;
+  //   setIsPlaying(!prevValue);
 
-    if (!prevValue) {
-      audioPlayer.current.play();
+  //   console.log("prevValue: ", prevValue);
+  //   console.log("isActive: ", isActive);
 
-      // ? requestAnimationFrame is a function that allows us to run a function
-      // ? every frame of the animation
+  //   if (!prevValue) {
+  //     audioPlayer.current.play();
 
-      animationRef.current = requestAnimationFrame(whilePlaying);
-    } else {
-      audioPlayer.current.pause();
-      cancelAnimationFrame(animationRef.current);
-    }
-  };
+  //     // ? requestAnimationFrame is a function that allows us to run a function
+  //     // ? every frame of the animation
+
+  //     animationRef.current = requestAnimationFrame(whilePlaying);
+  //   } else {
+  //     audioPlayer.current.pause();
+  //     cancelAnimationFrame(animationRef.current);
+  //   }
+  // };
 
   // ! Creating our animation function => whilePlaying
 
-  const whilePlaying = () => {
-    progressBar.current.value = audioPlayer.current.currentTime;
+  // const whilePlaying = () => {
+  //   progressBar.current.value = audioPlayer.current.currentTime;
 
-    // changePlayerCurrentTime();
-    setCurrentTime(progressBar.current.value);
+  //   // changePlayerCurrentTime();
+  //   setCurrentTime(progressBar.current.value);
 
-    animationRef.current = requestAnimationFrame(whilePlaying);
-  };
+  //   animationRef.current = requestAnimationFrame(whilePlaying);
+  // };
 
   // ! Changing the range of the progress bar FUNCTION
 
@@ -362,7 +371,6 @@ const AudioPlayer = (props) => {
 
       <audio
         ref={audioPlayer}
-        // src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
         src={audio ? audio : Songs[0].audio}
         preload="metadata"
       ></audio>
@@ -464,7 +472,6 @@ const AudioPlayer = (props) => {
             className={styles.puntero}
             onClick={() => {
               togglePlayPause();
-              setIsActive(!isActive);
             }}
           ></div>
         </div>
