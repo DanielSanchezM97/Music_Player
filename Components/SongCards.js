@@ -25,7 +25,11 @@ function SongCards(props) {
           }}
         >
           <div className={styles.imageContainer}>
-            <img src={Songs[i].image} alt={Songs[0].title} />
+            <img
+              className={styles.cardImage}
+              src={Songs[i].image}
+              alt={Songs[0].title}
+            />
           </div>
           <div className={styles.SongInfoContainer}>
             <p className={styles.SongTitle}>{Songs[i].title}</p>

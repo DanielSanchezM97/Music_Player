@@ -4,25 +4,34 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 60px auto;
+  margin: 60px 0;
+  margin: 60px 2rem;
   max-width: 1200px;
   padding: 0;
+  /* width: 100%; */
 }
 
 .card {
-  height: 180px;
+  height: 200px;
   width: 100%;
   border-radius: 5px;
   display: flex;
   /* justify-content: space-between; */
   cursor: pointer;
+
   /* background-color: #0a3d62; */
-  background-image: radial-gradient(
+
+  /* background-image: radial-gradient(
     circle 602px at 2.1% 5.1%,
     rgba(233, 0, 120, 1) 0%,
     rgba(0, 0, 0, 1) 90.1%
-  );
-  margin: 16px 0;
+  ); */
+
+  /* margin: 16px 0; */
+}
+
+.card:hover {
+  background-color: #0a3d62;
 }
 
 .imageContainer {
@@ -31,16 +40,23 @@
   justify-content: center;
 }
 
-.card img {
-  height: 130px;
+.cardImage {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
   margin: 10px 20px;
-  border-radius: 10px;
   box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4);
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
 }
 
 .SongInfoContainer {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   color: #ffffff;
@@ -76,8 +92,9 @@
     height: 150px;
   }
 
-  .card img {
-    height: 100px;
+  .cardImage {
+    height: 140px;
+    width: 150px;
   }
 
   .SongInfoContainer {
@@ -96,13 +113,23 @@
 /* xs */
 
 @media screen and (max-width: 576px) {
-  .card {
+  /* .card {
     height: 120px;
   }
 
   .card img {
     height: 80px;
+  } */
+
+  /* .card {
+    height: 150px;
   }
+
+  .card img {
+    height: 140px;
+    width: 100px;
+    object-fit: cover;
+  } */
 
   .SongInfoContainer {
     font-size: 12px;
@@ -120,12 +147,17 @@
 /* Galaxy fold === 280px width */
 
 @media screen and (max-width: 320px) {
+  .cardsContainer {
+    margin: 40px 0 0 0;
+  }
+
   .card {
     height: 100px;
   }
 
-  .card img {
-    height: 60px;
+  .cardImage {
+    height: 90px;
+    width: 100px;
   }
 
   .SongInfoContainer {
