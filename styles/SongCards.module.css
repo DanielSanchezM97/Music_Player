@@ -32,6 +32,16 @@
 
 .card:hover {
   background-color: #0a3d62;
+  transform: scale(1.05);
+}
+
+.ActiveCard {
+  background-color: #0a3d62;
+}
+
+.ActiveTitle {
+  color: rgb(25, 170, 228);
+  /* color: rgb(48, 121, 150); */
 }
 
 .imageContainer {
@@ -41,8 +51,8 @@
 }
 
 .cardImage {
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   object-fit: cover;
   margin: 10px 20px 10px 0;
   box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4);
@@ -66,6 +76,7 @@
   font-size: 17px;
   font-weight: bold;
   margin: 0;
+  letter-spacing: 0.5px;
 }
 
 .SongArtist {
@@ -93,7 +104,7 @@
   }
 
   .cardImage {
-    height: 140px;
+    height: 150px;
     width: 150px;
   }
 
@@ -156,7 +167,7 @@
   }
 
   .cardImage {
-    height: 90px;
+    height: 100px;
     width: 100px;
   }
 

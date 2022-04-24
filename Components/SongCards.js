@@ -17,7 +17,9 @@ function SongCards(props) {
       songCards.push(
         <div
           key={Songs[i].id}
-          className={styles.card}
+          className={`${styles.card} ${
+            songTitle === Songs[i].title ? styles.ActiveCard : ""
+          }`}
           onClick={() => {
             isActive && songTitle === Songs[i].title
               ? null
@@ -32,7 +34,13 @@ function SongCards(props) {
             />
           </div>
           <div className={styles.SongInfoContainer}>
-            <p className={styles.SongTitle}>{Songs[i].title}</p>
+            <p
+              className={`${styles.SongTitle} ${
+                songTitle === Songs[i].title ? styles.ActiveTitle : ""
+              }`}
+            >
+              {Songs[i].title}
+            </p>
             <p className={styles.SongArtist}>{Songs[i].artist}</p>
           </div>
         </div>
