@@ -20,11 +20,11 @@ body {
   ); */
 
   /* Test */
-  background-image: radial-gradient(
+  /* background-image: radial-gradient(
     circle 602px at 2.1% 5.1%,
-    rgba(42, 181, 206, 0.637) 0%,
-    rgb(0, 0, 0) 90.1%
-  );
+    #5f27cd 0%,
+    rgba(0, 0, 0, 1) 90.1%
+  ); */
   scroll-behavior: smooth;
 }
 

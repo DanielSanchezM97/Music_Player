@@ -51,7 +51,7 @@ export default function Home() {
 
   const saveMeBg = `radial-gradient(
     circle 602px at 2.1% 5.1%,
-    rgba(104, 11, 88, 0.527) 0%,
+    #5f27cd 0%,
     rgba(0, 0, 0, 1) 90.1%
   )`;
 
@@ -75,7 +75,7 @@ export default function Home() {
 
   const amIWrongBg = `radial-gradient(
     circle 602px at 2.1% 5.1%,
-    rgba(119, 119, 9, 0.527) 0%,
+    #ffc312 0%,
     rgba(0, 0, 0, 1) 90.1%
   )`;
 
