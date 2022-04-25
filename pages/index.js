@@ -14,8 +14,8 @@ export default function Home() {
   const [audio, setAudio] = useState(null);
   const [image, setImage] = useState(null);
   const [muted, setMuted] = useState(false);
-  const [songTitle, setSongTitle] = useState("(You're The) Devil in Disguise");
-  const [songArtist, setSongArtist] = useState("Elvis Presley");
+  const [songTitle, setSongTitle] = useState("");
+  const [songArtist, setSongArtist] = useState("");
   const [heartFill, setHeartFill] = useState(false);
   const [repeatSong, setRepeatSong] = useState(false);
   const [isActive, setIsActive] = useState(false);
@@ -179,6 +179,8 @@ export default function Home() {
   useEffect(() => {
     // ! passing the ids of the songs to the state
     setSongIds(Songs.map((song) => song.id));
+    setSongArtist(Songs[0].artist);
+    setSongTitle(Songs[0].title);
   }, []);
 
   useEffect(() => {
