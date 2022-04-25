@@ -31,6 +31,12 @@ export default function Home() {
 
   // ! set background in variables
 
+  const rockabyeBg = `radial-gradient(
+    circle 602px at 2.1% 5.1%,
+    rgba(42, 181, 206, 0.637) 0%,
+    rgb(0, 0, 0) 90.1%
+  )`;
+
   const devilInDisguiseBg = `radial-gradient(
     circle 602px at 2.1% 5.1%,
     rgba(65, 63, 77, 0.527) 0%,
@@ -74,6 +80,10 @@ export default function Home() {
   )`;
 
   const background = [
+    {
+      title: "Rockabye",
+      background: rockabyeBg,
+    },
     {
       title: "(You're The) Devil in Disguise",
       background: devilInDisguiseBg,
