@@ -2,10 +2,24 @@ import React from "react";
 import styles from "../styles/SongCards.module.css";
 
 function SongCards(props) {
-  const { Songs, audio, image, songTitle, songArtist, isActive, audioPlayer } =
-    props;
-  const { setAudio, setImage, setSongTitle, setSongArtist, setIsActive } =
-    props;
+  const {
+    Songs,
+    audio,
+    image,
+    songTitle,
+    songArtist,
+    isActive,
+    shuffle,
+    audioPlayer,
+  } = props;
+  const {
+    setAudio,
+    setImage,
+    setSongTitle,
+    setSongArtist,
+    setIsActive,
+    setShuffle,
+  } = props;
   const { togglePlayPause, declareProperties } = props;
 
   // ! FUNCTIONS
@@ -23,7 +37,9 @@ function SongCards(props) {
           onClick={() => {
             isActive && songTitle === Songs[i].title
               ? null
-              : (togglePlayPause(), declareProperties(Songs[i].title));
+              : (togglePlayPause(),
+                declareProperties(Songs[i].title),
+                setShuffle(false));
           }}
         >
           <div className={styles.imageContainer}>

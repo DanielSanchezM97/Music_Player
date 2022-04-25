@@ -20,7 +20,8 @@ export default function Home() {
   const [repeatSong, setRepeatSong] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [songBg, setSongBg] = useState(null);
-  const [currentSong, setCurrentSong] = useState(null);
+  const [shuffle, setShuffle] = useState(false);
+  const [songIds, setSongIds] = useState([]);
 
   // ! refs
 
@@ -112,13 +113,6 @@ export default function Home() {
       image:
         "https://www.nacionrex.com/__export/1515365585499/sites/debate/img/2018/01/07/foto_de_portada_elvis.jpg_423682103.jpg",
       audio: "../audios/AudioElvis.mp3",
-      background: `style="
-      background-image: radial-gradient(
-        circle 602px at 2.1% 5.1%,
-        rgb(206, 200, 203) 0%,
-        rgba(0, 0, 0, 1) 90.1%
-      );
-      `,
     },
     {
       id: 2,
@@ -173,6 +167,11 @@ export default function Home() {
       audio: "../audios/AmIWrong.mp3",
     },
   ];
+
+  useEffect(() => {
+    // ! passing the ids of the songs to the state
+    setSongIds(Songs.map((song) => song.id));
+  }, []);
 
   useEffect(() => {
     for (let i = 0; i < background.length; i++) {
@@ -256,6 +255,8 @@ export default function Home() {
           audioPlayer={audioPlayer}
           progressBar={progressBar}
           animationRef={animationRef}
+          shuffle={shuffle}
+          songIds={songIds}
           setIsPlaying={setIsPlaying}
           setDuration={setDuration}
           setCurrentTime={setCurrentTime}
@@ -267,6 +268,8 @@ export default function Home() {
           setSongTitle={setSongTitle}
           setSongArtist={setSongArtist}
           setIsActive={setIsActive}
+          setShuffle={setShuffle}
+          setSongIds={setSongIds}
           togglePlayPause={togglePlayPause}
         />
         <SongCards
@@ -277,11 +280,13 @@ export default function Home() {
           songArtist={songArtist}
           isActive={isActive}
           audioPlayer={audioPlayer}
+          shuffle={shuffle}
           setAudio={setAudio}
           setImage={setImage}
           setSongTitle={setSongTitle}
           setSongArtist={setSongArtist}
           setIsActive={setIsActive}
+          setShuffle={setShuffle}
           togglePlayPause={togglePlayPause}
           declareProperties={declareProperties}
         />

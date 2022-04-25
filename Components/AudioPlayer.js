@@ -28,6 +28,8 @@ const AudioPlayer = (props) => {
     isActive,
     audioPlayer,
     progressBar,
+    shuffle,
+    songIds,
     animationRef,
   } = props;
 
@@ -43,6 +45,8 @@ const AudioPlayer = (props) => {
     setSongTitle,
     setSongArtist,
     setIsActive,
+    setShuffle,
+    setSongIds,
   } = props;
 
   const { togglePlayPause } = props;
@@ -61,6 +65,10 @@ const AudioPlayer = (props) => {
       // end: 140,
     },
   ];
+
+  const randomsUsed = [];
+  let songIdsCopy = Songs.map((song) => song.id);
+  // setSongIds(songIdsCopy);
 
   // const Songs = [
   //   {
@@ -144,13 +152,36 @@ const AudioPlayer = (props) => {
     progressBar.current.max = seconds;
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
-  // ! useEffect to handle the end of the audio and the repeat song
+  // ! useEffect to handle the end of the audio and the repeat song and the play all songs
 
   useEffect(() => {
     if (currentTime == duration && isPlaying && !repeatSong) {
-      togglePlayPause();
-      timeTravel(0);
-      setIsActive(false);
+      if (shuffle) {
+        shuffleWihoutRepeat();
+      } else {
+        for (let i = 0; i < Songs.length; i++) {
+          if (Songs[i].title == songTitle) {
+            if (i == Songs.length - 1) {
+              togglePlayPause();
+              timeTravel(0);
+              setIsActive(false);
+              setSongIds(songIdsCopy);
+              return;
+            } else {
+              setCurrentTime(0);
+              setSongTitle(Songs[i + 1].title);
+              setSongArtist(Songs[i + 1].artist);
+              setImage(Songs[i + 1].image);
+              setAudio(Songs[i + 1].audio);
+              setIsActive(true);
+              setIsPlaying(true);
+              setSongIds(songIdsCopy);
+              audioPlayer.current.play();
+              return;
+            }
+          }
+        }
+      }
     } else if (currentTime == duration && repeatSong) {
       timeTravel(0);
       audioPlayer.current.play();
@@ -301,6 +332,41 @@ const AudioPlayer = (props) => {
     changeRange();
   };
 
+  const shuffleWihoutRepeat = () => {
+    if (songIds.length === 0) {
+      togglePlayPause();
+      timeTravel(0);
+      setIsActive(false);
+      setSongIds(songIdsCopy);
+      setShuffle(false);
+      return;
+    }
+
+    if (songIds.length === songIdsCopy.length) {
+      for (let i = 0; i < Songs.length; i++) {
+        if (Songs[i].title == songTitle) {
+          songIds.splice(i, 1);
+        }
+      }
+    }
+    const randomElement = songIds[Math.floor(Math.random() * songIds.length)];
+    const index = songIds.indexOf(randomElement);
+
+    if (index > -1) {
+      songIds.splice(index, 1);
+    }
+    console.log("randomElement", randomElement);
+    console.log("songIds", songIds);
+    console.log("shuffle else");
+    setSongTitle(Songs[randomElement - 1].title);
+    setSongArtist(Songs[randomElement - 1].artist);
+    setImage(Songs[randomElement - 1].image);
+    setAudio(Songs[randomElement - 1].audio);
+    setIsPlaying(true);
+    setCurrentTime(0);
+    return;
+  };
+
   const handlePrev = () => {
     Songs.map((song, index) => {
       if (song.title === songTitle) {
@@ -322,23 +388,29 @@ const AudioPlayer = (props) => {
   };
 
   const handleNext = () => {
-    Songs.map((song, index) => {
-      if (song.title === songTitle) {
-        if (index === Songs.length - 1) {
-          setAudio(Songs[0].audio);
-          setSongTitle(Songs[0].title);
-          setImage(Songs[0].image);
-          setSongArtist(Songs[0].artist);
-          setIsActive(true);
-        } else {
-          setAudio(Songs[index + 1].audio);
-          setSongTitle(Songs[index + 1].title);
-          setImage(Songs[index + 1].image);
-          setSongArtist(Songs[index + 1].artist);
-          setIsActive(true);
+    if (shuffle) {
+      shuffleWihoutRepeat();
+    } else {
+      Songs.map((song, index) => {
+        if (song.title === songTitle) {
+          if (index === Songs.length - 1) {
+            setAudio(Songs[0].audio);
+            setSongTitle(Songs[0].title);
+            setImage(Songs[0].image);
+            setSongArtist(Songs[0].artist);
+            setIsActive(true);
+            setShuffle(false);
+          } else {
+            setAudio(Songs[index + 1].audio);
+            setSongTitle(Songs[index + 1].title);
+            setImage(Songs[index + 1].image);
+            setSongArtist(Songs[index + 1].artist);
+            setIsActive(true);
+            setShuffle(false);
+          }
         }
-      }
-    });
+      });
+    }
   };
 
   // ! muted and unmuted
@@ -427,13 +499,18 @@ const AudioPlayer = (props) => {
       <div className={styles.controls}>
         <button
           onClick={() => {
-            handlePrev();
+            !shuffle ? handlePrev() : null;
           }}
-          className={styles.timeControls}
+          className={`${shuffle ? styles.prevOffset : styles.timeControls}`}
+          title="Previous Song"
         >
           <CgPlayTrackPrev />
         </button>
-        <button className={styles.timeControls} onClick={backThirty}>
+        <button
+          className={styles.timeControls}
+          onClick={backThirty}
+          title="Back 30 Seconds"
+        >
           <AiFillBackward />
         </button>
 
@@ -473,12 +550,18 @@ const AudioPlayer = (props) => {
             onClick={() => {
               togglePlayPause();
             }}
+            title="Play/Pause"
+            tabIndex={0}
           ></div>
         </div>
 
         {/* End of Play and Pause Button */}
 
-        <button className={styles.timeControls} onClick={forwardThirty}>
+        <button
+          className={styles.timeControls}
+          onClick={forwardThirty}
+          title="Forward 30 Seconds"
+        >
           <AiFillForward />
         </button>
         <button
@@ -486,6 +569,7 @@ const AudioPlayer = (props) => {
             handleNext();
           }}
           className={styles.timeControls}
+          title="Next Song"
         >
           <CgPlayTrackNext />
         </button>
@@ -494,12 +578,21 @@ const AudioPlayer = (props) => {
       {/* Additionnal Controls */}
 
       <div className={styles.controls}>
-        <button className={styles.AdditionalControls}>
+        <button
+          className={`${
+            repeatSong ? styles.shuffleOff : styles.AdditionalControls
+          } ${shuffle ? styles.ActiveShuffle : ""}`}
+          title="Shuffle"
+          onClick={() => {
+            !repeatSong ? setShuffle(!shuffle) : setShuffle(false);
+          }}
+        >
           <TiArrowShuffle />
         </button>
         <button
           className={styles.heart}
           onClick={() => setHeartFill(!heartFill)}
+          title="Favorite"
         >
           {heartFill ? (
             <AiOutlineHeart />
@@ -508,14 +601,21 @@ const AudioPlayer = (props) => {
           )}
         </button>
         <button
-          className={styles.AdditionalControls}
+          className={`${
+            shuffle ? styles.RepeatOff : styles.AdditionalControls
+          }`}
           onClick={() => {
-            setRepeatSong(!repeatSong);
+            !shuffle ? setRepeatSong(!repeatSong) : setRepeatSong(false);
           }}
+          title="Repeat Song"
         >
           {repeatSong ? <MdRepeatOne /> : <MdOutlineRepeat />}
         </button>
-        <button className={styles.AdditionalControls} onClick={toggleMute}>
+        <button
+          className={styles.AdditionalControls}
+          onClick={toggleMute}
+          title="Mute/Unmute"
+        >
           {muted ? <GiSpeakerOff /> : <GiSpeaker />}
         </button>
       </div>
@@ -551,3 +651,22 @@ const AudioPlayer = (props) => {
 
 export { AudioPlayer };
 // ! the {} means that this is a named export
+
+// if (Songs[i].title == songTitle) {
+//   if (i == Songs.length - 1) {
+//     togglePlayPause();
+//     timeTravel(0);
+//     setIsActive(false);
+//     return;
+//   } else {
+//     setCurrentTime(0);
+//     setSongTitle(Songs[i + 1].title);
+//     setSongArtist(Songs[i + 1].artist);
+//     setImage(Songs[i + 1].image);
+//     setAudio(Songs[i + 1].audio);
+//     setIsActive(true);
+//     setIsPlaying(true);
+//     audioPlayer.current.play();
+//     return;
+//   }
+// }
