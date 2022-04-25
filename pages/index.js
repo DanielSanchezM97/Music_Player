@@ -107,6 +107,14 @@ export default function Home() {
   const Songs = [
     {
       id: 1,
+      title: "Rockabye",
+      artist: "Clean Bandit",
+      like: false,
+      image: "https://angartwork.akamaized.net/?id=61786146&size=640",
+      audio: "../audios/Rockabye.mp3",
+    },
+    {
+      id: 2,
       title: "(You're The) Devil in Disguise",
       artist: "Elvis Presley",
       like: false,
@@ -115,7 +123,7 @@ export default function Home() {
       audio: "../audios/AudioElvis.mp3",
     },
     {
-      id: 2,
+      id: 3,
       title: "Get Lucky feat. Pharrell Williams and Nile Rodgers",
       artist: "Daft Punk",
       like: false,
@@ -123,7 +131,7 @@ export default function Home() {
       audio: "../audios/GetLucky.mp3",
     },
     {
-      id: 3,
+      id: 4,
       title: "Save Me",
       artist: "Bruno Martini",
       like: false,
@@ -132,7 +140,7 @@ export default function Home() {
       audio: "../audios/SaveMe.mp3",
     },
     {
-      id: 4,
+      id: 5,
       title: "Accidentally in Love",
       artist: "Counting Crows",
       like: false,
@@ -141,7 +149,7 @@ export default function Home() {
       audio: "../audios/AccidentallyInLove.mp3",
     },
     {
-      id: 5,
+      id: 6,
       title: "You Get What You Give",
       artist: "New Radicals",
       like: false,
@@ -150,7 +158,7 @@ export default function Home() {
       audio: "../audios/YouGetWhatYouGive.mp3",
     },
     {
-      id: 6,
+      id: 7,
       title: "Moves Like Jagger",
       artist: "Maroon 5",
       like: false,
@@ -159,7 +167,7 @@ export default function Home() {
       audio: "../audios/MovesLikeJagger.mp3",
     },
     {
-      id: 7,
+      id: 8,
       title: "Am I Wrong",
       artist: "Nico & Vinz",
       like: false,
