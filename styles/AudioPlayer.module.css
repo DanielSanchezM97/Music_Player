@@ -759,13 +759,7 @@
     font-size: 0.8rem;
   }
 
-  .timeControls {
-    font-size: 26px;
-    margin: 0;
-    padding: 0 0.5rem;
-  }
-
-  .AdditionalControls {
+  .timeControls .AdditionalControls .RepeatOff .shuffleOff .prevOffset {
     font-size: 26px;
     margin: 0;
     padding: 0 0.5rem;
