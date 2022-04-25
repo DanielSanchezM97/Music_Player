@@ -75,7 +75,7 @@ export default function Home() {
 
   const amIWrongBg = `radial-gradient(
     circle 602px at 2.1% 5.1%,
-    #ffc312 0%,
+    rgba(221, 151, 20, 0.911) 0%,
     rgba(0, 0, 0, 1) 90.1%
   )`;
 
