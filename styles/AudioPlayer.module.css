@@ -107,7 +107,7 @@
 .prevOffset {
   background: none;
   border: none;
-  font-size: 30px;
+  font-size: 26px;
   cursor: pointer;
   color: gray;
   z-index: 3;
@@ -759,7 +759,31 @@
     font-size: 0.8rem;
   }
 
-  .timeControls .AdditionalControls .RepeatOff .shuffleOff .prevOffset {
+  .timeControls {
+    font-size: 26px;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+
+  .AdditionalControls {
+    font-size: 26px;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+
+  .prevOffset {
+    font-size: 26px;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+
+  .shuffleOff {
+    font-size: 26px;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+
+  .RepeatOff {
     font-size: 26px;
     margin: 0;
     padding: 0 0.5rem;
