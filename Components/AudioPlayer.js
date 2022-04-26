@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/AudioPlayer.module.css";
 import { AiFillBackward } from "react-icons/ai";
 import { AiFillForward } from "react-icons/ai";
@@ -51,94 +51,7 @@ const AudioPlayer = (props) => {
 
   const { togglePlayPause } = props;
 
-  const chapters = [
-    {
-      // start: 0,
-      // end: 40,
-      start: 0,
-      end: 8,
-    },
-    {
-      start: 135,
-      end: 140,
-      // start: 100,
-      // end: 140,
-    },
-  ];
-
-  const randomsUsed = [];
   let songIdsCopy = Songs.map((song) => song.id);
-  // setSongIds(songIdsCopy);
-
-  // const Songs = [
-  //   {
-  //     title: "(You're The) Devil in Disguise",
-  //     artist: "Elvis Presley",
-  //     like: false,
-  //     image:
-  //       "https://www.nacionrex.com/__export/1515365585499/sites/debate/img/2018/01/07/foto_de_portada_elvis.jpg_423682103.jpg",
-  //     audio: "../audios/AudioElvis.mp3",
-  //     background: `style="
-  //     background-image: radial-gradient(
-  //       circle 602px at 2.1% 5.1%,
-  //       rgb(206, 200, 203) 0%,
-  //       rgba(0, 0, 0, 1) 90.1%
-  //     );
-  //     `,
-  //   },
-  //   {
-  //     title: "Get Lucky feat. Pharrell Williams and Nile Rodgers",
-  //     artist: "Daft Punk",
-  //     like: false,
-  //     image: "https://img.youtube.com/vi/h5EofwRzit0/hqdefault.jpg?rev=2.8.6.2",
-  //     audio: "../audios/GetLucky.mp3",
-  //   },
-  //   {
-  //     title: "Save Me",
-  //     artist: "Bruno Martini",
-  //     like: false,
-  //     image:
-  //       "https://i1.sndcdn.com/artworks-fDl6pv6QSY5GATMI-NOVBYQ-t500x500.jpg",
-  //     audio: "../audios/SaveMe.mp3",
-  //   },
-  //   {
-  //     title: "Accidentally in Love",
-  //     artist: "Counting Crows",
-  //     like: false,
-  //     image:
-  //       "https://www.gannett-cdn.com/-mm-/6adc9704e2926e2fdd103128da3a87abf86aee99/c=0-77-1742-2400/local/-/media/2016/09/07/Phoenix/Phoenix/636088629485674132-counting-crows-2.jpg",
-  //     audio: "../audios/AccidentallyInLove.mp3",
-  //   },
-  //   {
-  //     title: "You Get What You Give",
-  //     artist: "New Radicals",
-  //     like: false,
-  //     image:
-  //       "https://i0.wp.com/www.alexurbanpop.com/wp-content/uploads/2019/08/New-Radicals-You-Get-What-You-Give.jpg?fit=1000%2C1000&ssl=1",
-  //     audio: "../audios/YouGetWhatYouGive.mp3",
-  //   },
-  //   {
-  //     title: "Moves Like Jagger",
-  //     artist: "Maroon 5",
-  //     like: false,
-  //     image:
-  //       "https://p4.wallpaperbetter.com/wallpaper/819/67/757/maroon-5-band-members-look-wallpaper-preview.jpg",
-  //     audio: "../audios/MovesLikeJagger.mp3",
-  //   },
-  //   {
-  //     title: "Am I Wrong",
-  //     artist: "Nico & Vinz",
-  //     like: false,
-  //     image: "https://m.media-amazon.com/images/I/417OWNKAvZL.jpg",
-  //     audio: "../audios/AmIWrong.mp3",
-  //   },
-  // ];
-
-  // // ! refs
-
-  // const audioPlayer = useRef(); // ? reference to the audio component
-  // const progressBar = useRef(); // ? reference to the progress bar
-  // const animationRef = useRef(); // ? reference to the animation
 
   // ! useEffect to handle the audio player
 
@@ -152,7 +65,7 @@ const AudioPlayer = (props) => {
     progressBar.current.max = seconds;
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
-  // ! useEffect to handle the end of the audio and the repeat song and the play all songs
+  // ! useEffect to handle the end of the audio, repeat song || play all songs in order || play all songs in random order
 
   useEffect(() => {
     if (currentTime == duration && isPlaying && !repeatSong) {
@@ -198,16 +111,12 @@ const AudioPlayer = (props) => {
       audioPlayer.current.load(); // ? load the audio
       togglePlayPause();
       timeTravel(0);
-
-      progressBar.current.value = currentTime;
     } else if (audio && isPlaying) {
       setCurrentTime(0);
       audioPlayer.current.src = audio;
       audioPlayer.current.load(); // ? load the audio
       audioPlayer.current.play();
       timeTravel(0);
-
-      progressBar.current.value = currentTime;
     }
   }, [audio]);
 
@@ -253,37 +162,6 @@ const AudioPlayer = (props) => {
     const returnedSeconds = seconds < 10 ? `0${seconds}` : seconds;
     return `${returnedMinutes}:${returnedSeconds}`;
   };
-
-  // const togglePlayPause = () => {
-  //   const prevValue = isPlaying;
-  //   setIsPlaying(!prevValue);
-
-  //   console.log("prevValue: ", prevValue);
-  //   console.log("isActive: ", isActive);
-
-  //   if (!prevValue) {
-  //     audioPlayer.current.play();
-
-  //     // ? requestAnimationFrame is a function that allows us to run a function
-  //     // ? every frame of the animation
-
-  //     animationRef.current = requestAnimationFrame(whilePlaying);
-  //   } else {
-  //     audioPlayer.current.pause();
-  //     cancelAnimationFrame(animationRef.current);
-  //   }
-  // };
-
-  // ! Creating our animation function => whilePlaying
-
-  // const whilePlaying = () => {
-  //   progressBar.current.value = audioPlayer.current.currentTime;
-
-  //   // changePlayerCurrentTime();
-  //   setCurrentTime(progressBar.current.value);
-
-  //   animationRef.current = requestAnimationFrame(whilePlaying);
-  // };
 
   // ! Changing the range of the progress bar FUNCTION
 
@@ -342,6 +220,8 @@ const AudioPlayer = (props) => {
       return;
     }
 
+    // ! Removing the current song from the array the 1st time
+
     if (songIds.length === songIdsCopy.length) {
       for (let i = 0; i < Songs.length; i++) {
         if (Songs[i].title == songTitle) {
@@ -349,15 +229,17 @@ const AudioPlayer = (props) => {
         }
       }
     }
+
+    // ? Picking a random song from the array at pass the index to randomElement
+
     const randomElement = songIds[Math.floor(Math.random() * songIds.length)];
     const index = songIds.indexOf(randomElement);
+
+    // ! Removing that random pick from the array so it won't be picked again
 
     if (index > -1) {
       songIds.splice(index, 1);
     }
-    console.log("randomElement", randomElement);
-    console.log("songIds", songIds);
-    console.log("shuffle else");
     setSongTitle(Songs[randomElement - 1].title);
     setSongArtist(Songs[randomElement - 1].artist);
     setImage(Songs[randomElement - 1].image);
@@ -464,27 +346,6 @@ const AudioPlayer = (props) => {
             onChange={changeRange}
             step="0.05"
           />
-
-          {/* Chapters Video 2 */}
-
-          {/* {chapters.map((chapter, i) => {
-          const leftStyle = (chapter.start / duration) * 100;
-
-          const widthStyle = ((chapter.end - chapter.start) / duration) * 100;
-
-          return (
-            <div
-              key={i}
-              className={`${styles.chapter} ${
-                chapter.start === 0 && styles.start
-              } ${chapter.end === duration && styles.end}`}
-              style={{
-                "--left": `${leftStyle}%`,
-                "--width": `${widthStyle}%`,
-              }}
-            ></div>
-          );
-        })} */}
         </div>
 
         {/* Duration */}
@@ -516,14 +377,7 @@ const AudioPlayer = (props) => {
 
         {/* Play and Pause Button */}
 
-        {/* <button onClick={togglePlayPause} className={styles.playPause}>
-          {isPlaying ? <FaPause /> : <FaPlay className={styles.play} />}
-        </button> */}
-
-        <div
-          className={styles.newButton}
-          // onclick="this.classList.toggle('active')"
-        >
+        <div className={styles.newButton}>
           <div className={styles.background}></div>
           <div
             className={isActive ? styles.activeIcon : styles.icon}
@@ -531,14 +385,14 @@ const AudioPlayer = (props) => {
             height="200"
           >
             <div
-              className={`${styles.parte} ${
+              className={`${styles.part} ${
                 isActive ? styles.activeLeft : styles.left
               }`}
               x="0"
               y="0"
             ></div>
             <div
-              className={`${styles.parte} ${
+              className={`${styles.part} ${
                 isActive ? styles.activeRight : styles.right
               }`}
               x="0"
@@ -546,7 +400,7 @@ const AudioPlayer = (props) => {
             ></div>
           </div>
           <div
-            className={styles.puntero}
+            className={styles.pointer}
             onClick={() => {
               togglePlayPause();
             }}
@@ -619,54 +473,9 @@ const AudioPlayer = (props) => {
           {muted ? <GiSpeakerOff /> : <GiSpeaker />}
         </button>
       </div>
-
-      {/* Song Selector */}
-
-      <div>
-        {/* <button
-          onClick={() => {
-            setAudio(Elvis);
-            setImage(elvisImage);
-            setSongArtist("Elvis Presley");
-            setSongTitle("(You're The) Devil in Disguise");
-          }}
-        >
-          Elvis Song
-        </button> */}
-
-        {/* <button
-          onClick={() => {
-            setAudio(GetLucky);
-            setImage(getLuckyImage);
-            setSongArtist("Daft Punk");
-            setSongTitle("Get Lucky feat. Pharrell Williams and Nile Rodgers");
-          }}
-        >
-          Get Lucky Song
-        </button> */}
-      </div>
     </div>
   );
 };
 
 export { AudioPlayer };
 // ! the {} means that this is a named export
-
-// if (Songs[i].title == songTitle) {
-//   if (i == Songs.length - 1) {
-//     togglePlayPause();
-//     timeTravel(0);
-//     setIsActive(false);
-//     return;
-//   } else {
-//     setCurrentTime(0);
-//     setSongTitle(Songs[i + 1].title);
-//     setSongArtist(Songs[i + 1].artist);
-//     setImage(Songs[i + 1].image);
-//     setAudio(Songs[i + 1].audio);
-//     setIsActive(true);
-//     setIsPlaying(true);
-//     audioPlayer.current.play();
-//     return;
-//   }
-// }

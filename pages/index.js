@@ -224,6 +224,8 @@ export default function Home() {
     }
   };
 
+  // ! function that runs while the song is playing
+
   const whilePlaying = () => {
     progressBar.current.value = audioPlayer.current.currentTime;
 
@@ -294,18 +296,8 @@ export default function Home() {
         />
         <SongCards
           Songs={Songs}
-          audio={audio}
-          image={image}
           songTitle={songTitle}
-          songArtist={songArtist}
           isActive={isActive}
-          audioPlayer={audioPlayer}
-          shuffle={shuffle}
-          setAudio={setAudio}
-          setImage={setImage}
-          setSongTitle={setSongTitle}
-          setSongArtist={setSongArtist}
-          setIsActive={setIsActive}
           setShuffle={setShuffle}
           togglePlayPause={togglePlayPause}
           declareProperties={declareProperties}

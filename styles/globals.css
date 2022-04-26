@@ -4,22 +4,9 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  /* background: rgb(29, 108, 124);
-  background: linear-gradient(
-    90deg,
-    rgba(29, 108, 124, 1) 0%,
-    rgba(9, 9, 121, 1) 70%
-  ); */
 
-  /* Background in Use */
+  /* Test use to test new background colors when I add a new Song */
 
-  /* background-image: radial-gradient(
-    circle 602px at 2.1% 5.1%,
-    rgba(233, 0, 120, 1) 0%,
-    rgba(0, 0, 0, 1) 90.1%
-  ); */
-
-  /* Test */
   /* background-image: radial-gradient(
     circle 602px at 2.1% 5.1%,
     rgba(211, 159, 17, 0.781) 0%,

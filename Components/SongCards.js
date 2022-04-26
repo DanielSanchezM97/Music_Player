@@ -2,24 +2,8 @@ import React from "react";
 import styles from "../styles/SongCards.module.css";
 
 function SongCards(props) {
-  const {
-    Songs,
-    audio,
-    image,
-    songTitle,
-    songArtist,
-    isActive,
-    shuffle,
-    audioPlayer,
-  } = props;
-  const {
-    setAudio,
-    setImage,
-    setSongTitle,
-    setSongArtist,
-    setIsActive,
-    setShuffle,
-  } = props;
+  const { Songs, songTitle, isActive } = props;
+  const { setShuffle } = props;
   const { togglePlayPause, declareProperties } = props;
 
   // ! FUNCTIONS
@@ -65,12 +49,7 @@ function SongCards(props) {
     return songCards;
   };
 
-  return (
-    <div className={styles.cardsContainer}>
-      {/* Song Cards  */}
-      {createSongCards()}
-    </div>
-  );
+  return <div className={styles.cardsContainer}>{createSongCards()}</div>;
 }
 
 export default SongCards;

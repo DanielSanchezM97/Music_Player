@@ -6,9 +6,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   width: 100%;
-  /* height: 100vh; */
   color: #ffedd4;
   padding: 0 2rem;
 }
@@ -87,7 +85,6 @@
 
 .controls {
   display: flex;
-  /* margin: 30px 2px 0 2px; */
   margin: 0;
   align-items: center;
   justify-content: center;
@@ -150,20 +147,6 @@
   transform: scale(1.2);
 }
 
-.playPause {
-  background: white;
-  border: none;
-  border-radius: 50%;
-  width: 75px;
-  height: 75px;
-  font-size: 32px;
-  color: blue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
 .play {
   position: relative;
   left: 3px;
@@ -171,23 +154,9 @@
 
 .currentTime,
 .duration {
-  /* font-family: monospace; */
   font-size: 1rem;
   letter-spacing: 2px;
 }
-
-/* .currentTime {
-  font-size: 20px;
-}
-
-.duration {
-  font-size: 20px;
-  margin-left: 3px;
-} */
-
-/* .currentTime {
-  margin-left: 25px;
-} */
 
 .progressBarWrapper {
   display: flex;
@@ -197,7 +166,6 @@
 
 .progressBar {
   --bar-bg: white;
-  /* --bar-bg: #ffedd4; */
   --seek-before-width: 0;
   /* --seek-before-color: #ffc2a1; */
   --seek-before-color: #f40082;
@@ -209,7 +177,6 @@
   border-radius: 10px;
   position: relative;
   width: 500px;
-  /* height: 11px; */
   outline: none;
   cursor: pointer;
   margin: 0 12px;
@@ -267,10 +234,9 @@
   height: 11px;
 }
 
-/* knobby chrome and safari => Mistake Check */
+/* knobby chrome and safari => Good */
 
 .progressBar::-webkit-slider-thumb {
-  /* --webkit-appearance: none; => Mistake */
   -webkit-appearance: none;
   height: 15px;
   width: 15px;
@@ -375,7 +341,7 @@
   transition: transform 500ms;
   width: 200px;
 }
-.parte {
+.part {
   background: blue;
   height: 200px;
   position: absolute;
@@ -453,7 +419,6 @@
     43.77304% 56.66309%,
     43.773% 56.25486%
   );
-  /* position: relative; */
   transition: clip-path 500ms;
 }
 .right {
@@ -527,7 +492,7 @@
   transition: clip-path 500ms;
 }
 
-.puntero {
+.pointer {
   border-radius: 50%;
   cursor: pointer;
   height: 100px;
@@ -720,20 +685,6 @@
     height: 90px;
     width: 90px;
   }
-
-  /* .playPause {
-    width: 70px;
-    height: 70px;
-    font-size: 200px;
-    font-size: 2.1rem;
-  } */
-
-  /* .play {
-    height: 30px;
-    width: 30px;
-    min-height: 30px;
-    z-index: 3;
-  } */
 }
 
 @media screen and (max-width: 540px) {
@@ -789,10 +740,6 @@
     padding: 0 0.5rem;
   }
 
-  /* .controls {
-    max-width: 250px;
-  } */
-
   .heart {
     font-size: 26px;
     margin: 0;
@@ -807,20 +754,6 @@
     height: 85px;
     width: 85px;
   }
-
-  /* .playPause {
-    width: 65px;
-    height: 65px;
-    font-size: 200px;
-    font-size: 1.9rem;
-  } */
-
-  /* .play {
-    height: 28px;
-    width: 28px;
-    min-height: 28px;
-    z-index: 10;
-  } */
 }
 
 /* xs */
@@ -848,10 +781,6 @@
     font-size: 0.7rem;
   }
 
-  /* .controls {
-    max-width: 220px;
-  } */
-
   .timeControls {
     font-size: 24px;
     margin: 0;
@@ -860,20 +789,6 @@
   .heart {
     font-size: 24px;
   }
-
-  /* .playPause {
-    width: 60px;
-    height: 60px;
-    font-size: 200px;
-    font-size: 1.8rem;
-  } */
-
-  /* .play {
-    height: 26px;
-    width: 26px;
-    min-height: 26px;
-    z-index: 10;
-  } */
 }
 
 /* Galaxy fold === 280px width */
@@ -909,13 +824,6 @@
     font-size: 22px;
   }
 
-  .playPause {
-    width: 55px;
-    height: 55px;
-    font-size: 200px;
-    font-size: 24px;
-  }
-
   .newButton {
     width: 80px;
   }
@@ -924,11 +832,4 @@
     height: 70px;
     width: 70px;
   }
-
-  /* .play {
-    height: 24px;
-    width: 24px;
-    min-height: 24px;
-    z-index: 10;
-  } */
 }
