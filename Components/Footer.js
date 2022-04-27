@@ -14,7 +14,7 @@ const Footer = () => {
               <span className={`my-2 ${styles.footerTitles}`}>Contact</span>
               <p>
                 <a
-                  href="programmingacc97@gmail.com"
+                  href="mailto: programmingacc97@gmail.com"
                   className={styles.footerLinks}
                 >
                   ProgrammingAcc97@gmail.com
