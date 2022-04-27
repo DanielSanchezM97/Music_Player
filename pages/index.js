@@ -3,7 +3,9 @@ import styles from "../styles/Home.module.css";
 import React, { useState, useRef, useEffect } from "react";
 import { AudioPlayer } from "../Components/AudioPlayer";
 import SongCards from "../Components/SongCards";
+import Footer from "../Components/Footer";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   // ! Router.query is a function that returns the query object
@@ -350,6 +352,7 @@ export default function Home() {
           changeHeart={changeHeart}
         />
       </main>
+      <Footer />
     </div>
   );
 }

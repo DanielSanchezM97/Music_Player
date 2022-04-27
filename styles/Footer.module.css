@@ -1,0 +1,73 @@
+#social {
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+}
+
+.footerTitles {
+  font-size: 25px;
+  color: #8c8c8c;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.footerLinks {
+  font-size: 15px;
+  text-decoration: none;
+  color: #f1f1f1;
+  letter-spacing: 0.5px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.footerIcons {
+  height: 32px;
+  width: 32px;
+  margin-right: 20px;
+  color: #f1f1f1;
+}
+
+.CodepenIcon {
+  height: 32px;
+  width: 32px;
+  margin-right: 20px;
+  color: #f1f1f1;
+  padding: 0;
+}
+
+.CodepenIcon:hover {
+  color: blue;
+}
+
+.footerIcons:hover {
+  color: blue;
+}
+
+#copyText {
+  font-size: 17px;
+  color: #8c8c8c;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@media screen and (max-width: 980px) {
+  .footerIcons {
+    height: 27px;
+    width: 27px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #social {
+    justify-content: start;
+    align-items: flex-start;
+  }
+
+  .footerIcons {
+    height: 24px;
+    width: 24px;
+  }
+
+  .CodepenIcon {
+    height: 24px;
+    width: 24px;
+  }
+}
