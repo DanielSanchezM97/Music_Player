@@ -84,6 +84,17 @@
   margin: 0;
 }
 
+.heart {
+  background: none;
+  border: none;
+  font-size: 27px;
+  cursor: pointer;
+  color: white;
+  z-index: 3;
+  padding: 0;
+  margin-top: 10px;
+}
+
 /* .PlayBtnCards {
   color: #ffffff;
   position: absolute;
@@ -132,6 +143,11 @@
   .SongArtist {
     font-size: 12px;
   }
+
+  .heart {
+    font-size: 20px;
+    margin-top: 7px;
+  }
 }
 
 /* xs */
@@ -172,7 +188,7 @@
 
 @media screen and (max-width: 320px) {
   .cardsContainer {
-    margin: 40px 0 0 0;
+    margin: 40px 7px 0 7px;
   }
 
   .card {
@@ -189,10 +205,15 @@
   }
 
   .SongTitle {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .SongArtist {
-    font-size: 8px;
+    font-size: 7px;
+  }
+
+  .heart {
+    font-size: 15px;
+    margin-top: 5px;
   }
 }

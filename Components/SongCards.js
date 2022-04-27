@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "../styles/SongCards.module.css";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 function SongCards(props) {
-  const { Songs, songTitle, isActive } = props;
+  const { Songs, likes, songTitle, isActive } = props;
   const { setShuffle } = props;
-  const { togglePlayPause, declareProperties } = props;
+  const { togglePlayPause, declareProperties, changeHeart } = props;
 
   // ! FUNCTIONS
 
@@ -42,6 +43,16 @@ function SongCards(props) {
               {Songs[i].title}
             </p>
             <p className={styles.SongArtist}>{Songs[i].artist}</p>
+            <button className={styles.heart}>
+              {likes.map((like) =>
+                like.title === Songs[i].title ? (
+                  like.isLiked ? (
+                    <AiFillHeart key={like.id} style={{ color: "red" }} />
+                  ) : null
+                ) : // <AiOutlineHeart key={like.id} />
+                null
+              )}
+            </button>
           </div>
         </div>
       );

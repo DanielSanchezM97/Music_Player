@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import React, { useState, useRef, useEffect } from "react";
 import { AudioPlayer } from "../Components/AudioPlayer";
 import SongCards from "../Components/SongCards";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 export default function Home() {
   // ! Router.query is a function that returns the query object
@@ -16,12 +17,12 @@ export default function Home() {
   const [muted, setMuted] = useState(false);
   const [songTitle, setSongTitle] = useState("");
   const [songArtist, setSongArtist] = useState("");
-  const [heartFill, setHeartFill] = useState(false);
   const [repeatSong, setRepeatSong] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [songBg, setSongBg] = useState(null);
   const [shuffle, setShuffle] = useState(false);
   const [songIds, setSongIds] = useState([]);
+  const [likes, setLikes] = useState([]);
 
   // ! refs
 
@@ -186,11 +187,21 @@ export default function Home() {
     },
   ];
 
+  let Likes = [];
+  Likes = Songs.map((song) => {
+    return {
+      id: song.id,
+      title: song.title,
+      isLiked: song.like,
+    };
+  });
+
   useEffect(() => {
     // ! passing the ids of the songs to the state
     setSongIds(Songs.map((song) => song.id));
     setSongArtist(Songs[0].artist);
     setSongTitle(Songs[0].title);
+    setLikes(Likes);
   }, []);
 
   useEffect(() => {
@@ -249,9 +260,42 @@ export default function Home() {
     window.scrollTo(0, 0);
   };
 
+  const LikeOrDislike = (e) => {
+    setLikes(
+      likes.map((like) =>
+        like.title === e ? { ...like, isLiked: !like.isLiked } : like
+      )
+    );
+  };
+
+  const changeHeart = () => {
+    for (let i = 0; i < likes.length; i++) {
+      if (likes[i].title === songTitle) {
+        if (likes[i].isLiked) {
+          return (
+            <AiFillHeart
+              style={{
+                color: "red",
+              }}
+            />
+          );
+        } else {
+          return <AiOutlineHeart />;
+        }
+      }
+    }
+  };
+
   return (
     <div
-      style={{ backgroundImage: songBg }}
+      style={{
+        backgroundImage: `${
+          songBg
+            ? songBg
+            : "radial-gradient(circle 602px at 2.1% 5.1%,rgba(42, 181, 206, 0.637) 0%,rgb(0, 0, 0) 90.1%)"
+        }`,
+      }}
+      // style={{ backgroundImage: songBg }}
       // className={styles.container}
     >
       <Head>
@@ -263,13 +307,13 @@ export default function Home() {
       <main className={styles.main}>
         <AudioPlayer
           Songs={Songs}
+          likes={likes}
           isPlaying={isPlaying}
           duration={duration}
           currentTime={currentTime}
           audio={audio}
           image={image}
           muted={muted}
-          heartFill={heartFill}
           repeatSong={repeatSong}
           songTitle={songTitle}
           songArtist={songArtist}
@@ -284,7 +328,6 @@ export default function Home() {
           setCurrentTime={setCurrentTime}
           setAudio={setAudio}
           setImage={setImage}
-          setHeartFill={setHeartFill}
           setRepeatSong={setRepeatSong}
           setMuted={setMuted}
           setSongTitle={setSongTitle}
@@ -293,14 +336,18 @@ export default function Home() {
           setShuffle={setShuffle}
           setSongIds={setSongIds}
           togglePlayPause={togglePlayPause}
+          LikeOrDislike={LikeOrDislike}
+          changeHeart={changeHeart}
         />
         <SongCards
           Songs={Songs}
+          likes={likes}
           songTitle={songTitle}
           isActive={isActive}
           setShuffle={setShuffle}
           togglePlayPause={togglePlayPause}
           declareProperties={declareProperties}
+          changeHeart={changeHeart}
         />
       </main>
     </div>

@@ -8,19 +8,17 @@ import { GiSpeaker } from "react-icons/gi";
 import { GiSpeakerOff } from "react-icons/gi";
 import { MdOutlineRepeat } from "react-icons/md";
 import { MdRepeatOne } from "react-icons/md";
-import { AiOutlineHeart } from "react-icons/ai";
-import { AiFillHeart } from "react-icons/ai";
 import { TiArrowShuffle } from "react-icons/ti";
 
 const AudioPlayer = (props) => {
   const {
     Songs,
+    likes,
     isPlaying,
     duration,
     currentTime,
     audio,
     image,
-    heartFill,
     repeatSong,
     muted,
     songTitle,
@@ -39,7 +37,6 @@ const AudioPlayer = (props) => {
     setCurrentTime,
     setAudio,
     setImage,
-    setHeartFill,
     setRepeatSong,
     setMuted,
     setSongTitle,
@@ -49,7 +46,7 @@ const AudioPlayer = (props) => {
     setSongIds,
   } = props;
 
-  const { togglePlayPause } = props;
+  const { togglePlayPause, LikeOrDislike, changeHeart } = props;
 
   let songIdsCopy = Songs.map((song) => song.id);
 
@@ -302,6 +299,24 @@ const AudioPlayer = (props) => {
     setMuted(!muted);
   };
 
+  // const changeHeart = () => {
+  //   for (let i = 0; i < likes.length; i++) {
+  //     if (likes[i].title === songTitle) {
+  //       if (likes[i].isLiked) {
+  //         return (
+  //           <AiFillHeart
+  //             style={{
+  //               color: "red",
+  //             }}
+  //           />
+  //         );
+  //       } else {
+  //         return <AiOutlineHeart />;
+  //       }
+  //     }
+  //   }
+  // };
+
   return (
     <div className={styles.audioPlayer}>
       {/* Song Cover */}
@@ -445,14 +460,10 @@ const AudioPlayer = (props) => {
         </button>
         <button
           className={styles.heart}
-          onClick={() => setHeartFill(!heartFill)}
+          onClick={() => LikeOrDislike(songTitle)}
           title="Favorite"
         >
-          {heartFill ? (
-            <AiOutlineHeart />
-          ) : (
-            <AiFillHeart style={{ color: "red" }} />
-          )}
+          {changeHeart()}
         </button>
         <button
           className={`${
