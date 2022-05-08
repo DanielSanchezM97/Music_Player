@@ -33,7 +33,7 @@ const Footer = () => {
               <span className={`${styles.footerTitles}`}>About</span>
               <p>
                 <a
-                  href="https://danielsanchezportfolio.netlify.app/"
+                  href="https://portfoliods.netlify.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.footerLinks}
