@@ -53,7 +53,7 @@ const Footer = () => {
               </p>
               <p>
                 <a
-                  href="https://www.canva.com/design/DAE5Vemo7L0/I1_4-Wv4p6Gkai3M0VbWXw/view?utm_content=DAE5Vemo7L0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                  href="https://www.canva.com/design/DAFKFgpDk_I/sYHrqXOnOxzrVnjfTpGi0w/edit?utm_content=DAFKFgpDk_I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.footerLinks}
