@@ -123,7 +123,8 @@ export default function Home() {
       title: "Rockabye",
       artist: "Clean Bandit",
       like: false,
-      image: "https://angartwork.akamaized.net/?id=61786146&size=640",
+      image:
+        "https://upload.wikimedia.org/wikipedia/en/2/26/CleanBanditWhatIsLove.png",
       audio: "../audios/Rockabye.mp3",
     },
     {
