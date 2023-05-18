@@ -49,8 +49,7 @@ function SongCards(props) {
                   like.isLiked ? (
                     <AiFillHeart key={like.id} style={{ color: "red" }} />
                   ) : null
-                ) : // <AiOutlineHeart key={like.id} />
-                null
+                ) : null
               )}
             </button>
           </div>

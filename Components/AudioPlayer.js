@@ -154,7 +154,6 @@ const AudioPlayer = (props) => {
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
     const returnedMinutes = minutes < 10 ? `${minutes}` : minutes;
-    // const returnedMinutes = minutes < 10 ? `0${minutes}` : minutes;
     const seconds = Math.floor(secs % 60);
     const returnedSeconds = seconds < 10 ? `0${seconds}` : seconds;
     return `${returnedMinutes}:${returnedSeconds}`;
@@ -176,9 +175,6 @@ const AudioPlayer = (props) => {
     // ? progressBar.current.style.setProperty => takes two arguments
     // ? first is the property name
     // ? second is the value of the property
-
-    // console.log("bar", progressBar.current.value);
-    // console.log("duration", duration);
 
     progressBar.current.style.setProperty(
       "--seek-before-width",
@@ -298,24 +294,6 @@ const AudioPlayer = (props) => {
     audioPlayer.current.muted = !audioPlayer.current.muted;
     setMuted(!muted);
   };
-
-  // const changeHeart = () => {
-  //   for (let i = 0; i < likes.length; i++) {
-  //     if (likes[i].title === songTitle) {
-  //       if (likes[i].isLiked) {
-  //         return (
-  //           <AiFillHeart
-  //             style={{
-  //               color: "red",
-  //             }}
-  //           />
-  //         );
-  //       } else {
-  //         return <AiOutlineHeart />;
-  //       }
-  //     }
-  //   }
-  // };
 
   return (
     <div className={styles.audioPlayer}>
